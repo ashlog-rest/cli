@@ -10,7 +10,7 @@ setup(
         "Bug Tracker": "https://github.com/ashlog-rest/cli/issues",
     },
     package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
+    packages=find_packages(where="src"),
     install_requires=[
         'click',
         'keyring',
