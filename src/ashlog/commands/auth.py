@@ -3,7 +3,7 @@ import keyring
 import os
 import requests
 from urllib.parse import urljoin
-from common.util import ashlog_dir, is_logged_in
+from common.util import ashlog_dir, get_credential, is_logged_in
 
 
 @click.group()
@@ -46,5 +46,15 @@ def logout():
     if is_logged_in():
         keyring.delete_password(
             'ashlog', keyring.get_credential('ashlog', None).username)
+    else:
+        click.echo('You are not logged in.', err=True)
+
+
+@auth.command()
+def whoami():
+    """ Return the username of the logged in user. """
+    if is_logged_in():
+        username = get_credential()[0]
+        click.echo(f'Logged in as {username}.')
     else:
         click.echo('You are not logged in.', err=True)
