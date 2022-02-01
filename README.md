@@ -1,3 +1,3 @@
 # AshLog CLI
 
-Manage your projects and logs from the command line.
+Manage your AshLog projects and logs from the command line.
