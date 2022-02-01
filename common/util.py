@@ -54,4 +54,4 @@ def send_get_request(endpoint, data=None):
         urljoin(get_host(), endpoint),
         json=data,
         headers={'Authorization': f'Bearer {get_access_token()}'}
-    ).json()
+    )
