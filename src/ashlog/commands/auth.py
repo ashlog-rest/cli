@@ -44,8 +44,9 @@ def login():
 def logout():
     """ Remove credentials from keyring. """
     if is_logged_in():
+        username = get_credential()[0]
         keyring.delete_password(
-            'ashlog', keyring.get_credential('ashlog', None).username)
+            'ashlog', username)
     else:
         click.echo('You are not logged in.', err=True)
 

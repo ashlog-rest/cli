@@ -5,7 +5,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 
 setup(
     name='ashlog-cli',
-    version='0.0.6',
+    version='0.0.1',
     author='Giulio De Matteis',
     description='A simple command line interface for AshLog.',
     long_description=long_description,
