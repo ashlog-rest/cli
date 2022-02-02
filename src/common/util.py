@@ -49,6 +49,14 @@ def send_post_request(endpoint, data):
     )
 
 
+def send_put_request(endpoint, data):
+    return requests.put(
+        urljoin(get_host(), endpoint),
+        json=data,
+        headers={'Authorization': f'Bearer {get_access_token()}'}
+    )
+
+
 def send_get_request(endpoint, data=None):
     return requests.get(
         urljoin(get_host(), endpoint),

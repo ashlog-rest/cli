@@ -6,6 +6,7 @@ from common.util import (
     get_host,
     send_get_request,
     send_post_request,
+    send_put_request,
 )
 from urllib.parse import urljoin
 
@@ -68,3 +69,25 @@ def new(project_name):
                 'There was an error while creating the project.', err=True)
     else:
         click.echo('You must be logged in to create a project.', err=True)
+
+
+@project.command()
+@click.argument('project_id')
+@click.argument('project_name')
+def rename(project_id, project_name):
+    """ Rename a project. """
+    if is_logged_in():
+        r = send_put_request(
+            f'api/project/{project_id}/',
+            data={
+                'name': project_name,
+            }
+        )
+        if r.status_code == 200:
+            click.echo(
+                f'The project has been renamed to {project_name}#{project_id}.')
+        else:
+            click.echo(
+                'There was an error while renaming the project.', err=True)
+    else:
+        click.echo('You must be logged in to rename a project.', err=True)
